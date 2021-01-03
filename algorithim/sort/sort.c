@@ -10,106 +10,77 @@
 
 float Time[8] = {0,0,0,0,0,0,0,0};
 
+int left = 0;
+int right = MAXSIZE - 1;
+int first = 0;
+int last = MAXSIZE - 1;
+
 void sort()
 {
     List *list;
-    int left,right;
     int flag = 0;
-    int first = 0;
-    int last = MAXSIZE-1;
     list = (List *)malloc(sizeof(List));
     do
     {
-    switch(menue())
+        enum FUNCTION function = menue();
+        if (function == EXIT)
         {
-            case 1:
-                {
-                    init_list(list);
-                    printf("排序前：");
-                    print_list(list);
-                    insert_sort(list);
-                    printf("排序后：");
-                    print_list(list);
-                    system("read -p 'press any key to continue ...' var");
-                    system("clear");
-                    continue;
-                }
-            case 2:
-                {
-                    init_list(list);
-                    printf("排序前：");
-                    print_list(list);
-                    shell_sort(list);
-                    printf("排序后：");
-                    print_list(list);
-                    system("read -p 'press any key to continue ...' var");
-                    system("clear");
-                    break;
-
-                }
-            case 3:{
-                    init_list(list);
-                    printf("排序前：");
-                    print_list(list);
-                    bubble_sort(list);
-                    printf("排序后：");
-                    print_list(list);
-                    system("read -p 'press any key to continue ...' var");
-                    system("clear");
-                    break;
-
-                        
-                   }
-            case 4:{
-                    left = 0;
-                    right = MAXSIZE-1;
-                    init_list(list);
-                    printf("排序前：");
-                    print_list(list);
-                    quick_sort(list,left,right);
-                    printf("排序后：");
-                    print_list(list);
-                    system("read -p 'press any key to continue ...' var");
-                    system("clear");
-                    break;
-                   }
-            case 5:{
-                    init_list(list);
-                    printf("排序前：");
-                    print_list(list);
-                   select_sort(list);
-                    printf("排序后：");
-                    print_list(list);
-                    system("read -p 'press any key to continue ...' var");
-                    system("clear");
-                    break;
-                   }
-            case 7:{
-                    init_list(list);
-                    printf("排序前：");
-                    print_list(list);
-                    merge_sort(list,first,last);
-                    printf("排序后：");
-                    print_list(list);
-                    system("read -p 'press any key to continue ...' var");
-                    system("clear");
-                    break;
-                   }
-            case 9:
-                {
-                    print_time();
-                    break;
-                }
-            case 10:
-                {
-                    flag = 1;
-                    break;
-                    
-                }
+            break;
         }
+        if (function == TIME_COUNT)
+        {
+            print_time();
+            break;
+        }
+        init_list(list);
+        printf("排序前：");
+        print_list(list);
+        do_sort(function, list);
+        printf("排序后：");
+        print_list(list);
+        system("read -p 'press any key to continue ...' var");
+        system("clear");
     }
     while(flag == 0 );
 
+}
+
+void do_sort(enum FUNCTION sort_type, List *list)
+{
+    switch(sort_type)
+    {
+        case INSERT:
+            {
+                insert_sort(list);
+                break;
+            }
+        case SHELL:
+            {
+                shell_sort(list);
+                break;
+            }
+        case BUBBLE:{
+                bubble_sort(list);
+                break;
+               }
+        case QUICK:{
+                quick_sort(list, left, right);
+                break;
+               }
+        case 5:{
+                select_sort(list);
+                break;
+               }
+        case 7:{
+                merge_sort(list, first, last);
+                break;
+               }
+        default:
+        {
+            printf("undefine");
+        }
+    }
+    
 }
 
 
@@ -226,7 +197,7 @@ void bubble_sort(List *list)
     Time[2] = (double)(end-start)/CLOCKS_PER_SEC;
 }
 
-void quick_sort(List *list,int left,int right)
+void quick_sort(List *list, int left, int right)
 {//快速排序的递归实现
     int privot = 0;
     float start,end;
@@ -242,7 +213,7 @@ void quick_sort(List *list,int left,int right)
 }
 
 
-int do_quick_sort(List *list,int left,int right)
+int do_quick_sort(List *list, int left, int right)
 {//快速排序的核心算法
     int key = list->r[right];
     while (left < right)

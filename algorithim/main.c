@@ -9,7 +9,7 @@
 //#include "hanoi.h"
 //#include "maze.h"
 
-#include "sort.h"
+#include "sort/sort.h"
 
 int main(int argc, const char * argv[]) {
     //hanoi();

@@ -23,6 +23,10 @@ typedef struct{
     
 }List;
 
+enum FUNCTION {
+    INSERT = 1, SHELL, BUBBLE, QUICK, SELECT, HEAP, MERGE, BASE, TIME_COUNT, EXIT
+};
+
 /// 排序
 void sort(void);
 
@@ -83,5 +87,7 @@ void print_time(void);
 
 /// 排序菜单
 int  menue(void);
+
+void do_sort(enum FUNCTION sort_type, List *list);
 
 #endif /* sort_h */

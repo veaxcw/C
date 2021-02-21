@@ -2,12 +2,7 @@
 // Created by 程威 on 2021/1/3.
 //
 
-#include "../../include/Fork/Fork.h"
-#include "../../include/Fork/user_fork.h"
-#include "stdio.h"
-#include "stdlib.h"
-#include "sys/types.h"
-#include "unistd.h"
+#include "../../include/common/csapp .h"
 
 void fork_demo() {
     pid_t pid;

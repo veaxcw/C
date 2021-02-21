@@ -4,13 +4,15 @@
 
 #include <stdlib.h>
 #include "Wait/Wait.h"
-#include "Fork/user_fork.h"
+#include "common/csapp .h"
 #include "stdio.h"
 #include "sys/types.h"
 #include "sys/wait.h"
 #include "unistd.h"
 #include "errno.h"
 #include "signal.h"
+#include "../../include/common/csapp .h"
+
 #define N 2
 
 void wait_demo() {

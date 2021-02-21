@@ -12,9 +12,11 @@ message(${PROJECT_SOURCE_DIR})
 include_directories(${PROJECT_SOURCE_DIR}/include)
 
 set(SRC
-        ${PROJECT_SOURCE_DIR}/src/Fork/Fork.c
-        ${PROJECT_SOURCE_DIR}/src/fork_util/user_fork.c
-        ${PROJECT_SOURCE_DIR}/src/main.c src/Wait/Wait.c)
+        ${PROJECT_SOURCE_DIR}/src/main.c
+        ${PROJECT_SOURCE_DIR}/src/Wait/Wait.c
+        ${PROJECT_SOURCE_DIR}/src/Signal/Signal.c
+        ${PROJECT_SOURCE_DIR}/src/common/csapp.c
+        ${PROJECT_SOURCE_DIR}/src/Fork/Fork.c)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin)
 

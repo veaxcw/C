@@ -86,7 +86,7 @@ void do_merge(List *list,int first,int mid, int last);
 void print_time(void);
 
 /// 排序菜单
-int  menue(void);
+int menue(void);
 
 void do_sort(enum FUNCTION sort_type, List *list);
 
